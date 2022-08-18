@@ -33,9 +33,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
     }
 
     echo "result: {$result} <br/>";
-    foreach( $result as $key => $value ) {
-        echo "{$key} : {$value} <br/>";
-    }
+    
     echo '<a href="https://bank.mind.contact/index.php">index</a>';
 
     //header("Location: https://bank.mind.contact/index.php");
