@@ -22,6 +22,7 @@ class AtomicDatabase implements Database {
         $this->username = getenv("MYSQL_USERNAME");
         $this->password = getenv("MYSQL_PASSWORD");
         $this->database = getenv("MYSQL_DATABASE");
+        echo "123456 " . getenv("MYSQL_USERNAME") .":".getenv("MYSQL_PASSWORD").":".getenv("MYSQL_DATABASE");
     }
 
     public function connect() {
