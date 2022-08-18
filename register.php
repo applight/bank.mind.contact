@@ -21,7 +21,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
 
     $db = AtomicDatabase::getInstance();
 
-    $mcdb = mysqli("127.0.0.1", getenv("DB_USERNAME"), getenv("DB_PASSWORD"), getenv("DB_DATABASE"));
+    $mcdb = new mysqli("127.0.0.1", getenv("DB_USERNAME"), getenv("DB_PASSWORD"), getenv("DB_DATABASE"));
     $mcdb_result = $mcdb->query("INSERT INTO 'users' ('email','first_name','last_name','phone','password')"
                 . " VALUES ('{$email}','{$first}','{$last}','{$phone}','{$password}');"
             );
