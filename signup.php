@@ -22,25 +22,26 @@ $page = Page::getInstance();
 			<!-- Main -->
 				<section id="main" class="container">
 					<section class="box">
-						<form method="post" action=<?php echo "\"". ($pass==0 ? "signup.php":"register.php") ."\""; ?> >
+					<?php
+					function typeEq($pass, $type) {
+						if ( $_SESSION['thisPass'] == $pass ) {
+							return " type=\"{$type}\" ";
+						} else {
+							return " type=\"hidden\" ";
+						}
+					}
+					
+					if (isset($_POST['email']) && isset($_POST['password']) && 
+						isset($_POST['password1']) && 
+						$_POST['password'] == $_POST['password1']) {
+							$_SESSION['thisPass'] = 1;
+					} else {
+						$_SESSION['thisPass'] = 0;
+					}
+					?>
+						<form method="post" action=<?php echo "\"". ($_SESSION['thisPass'] == 0 ? "signup.php":"register.php") ."\""; ?> >
 							<div class="row gtr-uniform gtr-50">
-								<?php
-								function typeEq($pass, $type) {
-									if ( $_SESSION['thisPass'] == $pass ) {
-										return " type=\"{$type}\" ";
-									} else {
-										return " type=\"hidden\" ";
-									}
-								}
-								
-								if (isset($_POST['email']) && isset($_POST['password']) && 
-									isset($_POST['password1']) && 
-									$_POST['password'] == $_POST['password1']) {
-										$_SESSION['thisPass'] = 1;
-								} else {
-									$_SESSION['thisPass'] = 0;
-								}
-								?>
+
 								<!-- zeroeth pass -->
 								<div class="col-12">
 									<input <?php echo typeEq(0, "email"); ?> name="email" id="email" value=<?php echo "\"".$_POST['email']."\""; ?> placeholder="Email" />
