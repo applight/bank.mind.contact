@@ -3,32 +3,23 @@ require_once 'Page.php';
 $page = Page::getInstance();
 ?>
 <!DOCTYPE HTML>
-<!--
-	Alpha by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
-	<head>
-		<title>Alpha by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
+	<?php echo $page->head(); ?>
+
 	<body class="landing is-preload">
 		<div id="page-wrapper">
 
 			<?php echo $page->nav(); ?>
 
 			<!-- Banner -->
-				<section id="banner">
-					<h2>Alpha</h2>
-					<p>Another fine responsive site template freebie by HTML5 UP.</p>
-					<ul class="actions special">
-						<li><a href="#" class="button primary">Sign Up</a></li>
-						<li><a href="#" class="button">Learn More</a></li>
-					</ul>
-				</section>
+			<section id="banner">
+				<h2>Alpha</h2>
+				<p>Another fine responsive site template freebie by HTML5 UP.</p>
+				<ul class="actions special">
+					<li><a href="#" class="button primary">Sign Up</a></li>
+					<li><a href="#" class="button">Learn More</a></li>
+				</ul>
+			</section>
 
 			<!-- Main -->
 				<section id="main" class="container">
