@@ -18,7 +18,7 @@ $page = Page::getInstance();
 	<body class="landing is-preload">
 		<div id="page-wrapper">
 
-			<?php $page->nav(); ?>
+			<?php echo $page->nav(); ?>
 
 			<!-- Banner -->
 				<section id="banner">
