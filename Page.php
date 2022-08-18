@@ -6,8 +6,8 @@ require_once 'Database.php';
 class Page {
     use Singleton;
 
-    protected $login;
-    protected $db;
+    public $login;
+    public $db;
     protected $title = "Mind Contact";
 
     protected function __construct() {
