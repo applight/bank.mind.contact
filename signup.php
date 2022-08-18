@@ -25,11 +25,11 @@ $page = Page::getInstance();
 						<form method="post" action=<?php echo "\"". ($pass==0 ? "signup.php":"register.php") ."\""; ?> >
 							<div class="row gtr-uniform gtr-50">
 								<?php
-								function areHidden($pass) {
+								function typeEq($pass, $type) {
 									if ( $_SESSION['thisPass'] == $pass ) {
-										return "";
+										return " type=\"{$type}\" ";
 									} else {
-										return " hidden=\"true\" ";
+										return " type=\"hidden\" ";
 									}
 								}
 								
@@ -43,24 +43,24 @@ $page = Page::getInstance();
 								?>
 								<!-- zeroeth pass -->
 								<div class="col-12">
-									<input <?php echo areHidden(0); ?> type="email" name="email" id="email" value=<?php echo "\"".$_POST['email']."\""; ?> placeholder="Email" />
+									<input <?php echo typeEq(0, "email"); ?> name="email" id="email" value=<?php echo "\"".$_POST['email']."\""; ?> placeholder="Email" />
 								</div>
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo areHidden(0); ?> type="password" name="password" id="password" value=<?php echo "\"".$_POST['password']."\""; ?>  placeholder="Password" />
+									<input <?php echo typeEq(0, "password"); ?> name="password" id="password" value=<?php echo "\"".$_POST['password']."\""; ?>  placeholder="Password" />
 								</div>
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo areHidden(0); ?> type="password" name="password1" id="password1" value=<?php echo "\"".$_POST['password1']."\""; ?>  placeholder="Password" />
+									<input <?php echo typeEq(0, "password"); ?> name="password1" id="password1" value=<?php echo "\"".$_POST['password1']."\""; ?>  placeholder="Password" />
 								</div>
 								
 								<!-- first pass -->
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo areHidden(1); ?> type="text" name="firstname" id="firstname" value="" placeholder="First name" />
+									<input <?php echo typeEq(1, "text"); ?> name="firstname" id="firstname" value="" placeholder="First name" />
 								</div>
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo areHidden(1); ?> type="text" name="lastname" id="lastname" value="" placeholder="Last name" />
+									<input <?php echo typeEq(1, "text"); ?> name="lastname" id="lastname" value="" placeholder="Last name" />
 								</div>
 								<div class="col-12">
-									<input <?php echo areHidden(1); ?> type="text" name="phone" id="phone" value="" placeholder="Phone number" />
+									<input <?php echo typeEq(1, "text"); ?> name="phone" id="phone" value="" placeholder="Phone number" />
 								</div>
 
 								<div class="col-12">
