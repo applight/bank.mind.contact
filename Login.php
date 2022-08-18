@@ -26,7 +26,7 @@ class Login {
         }
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $userdata = $db->select('users', 
+        $userdata = $this->db->select('users', 
             ['first_name','last_name', 'phone'], 
             ['email' => $email, 'password' => $hash]
         );
