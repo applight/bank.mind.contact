@@ -4,14 +4,14 @@ require_once 'Database.php';
 if (    !isset($_POST['firstname']) || !isset($_POST['lastname']) 
     ||  !isset($_POST['email']) || !isset($_POST['phone']) 
     ||  !isset($_POST['password']) || !isset($_POST['password1']) ) {
-        // missing input value(s)
+        echo "Missing input value(s)<br/>";
 } elseif ( !ctype_alpha($_POST['firstname']) 
     || !ctype_alpha($_POST['lastname']) 
     || !ctype_alnum($_POST['phone'])
     || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        // invalid input value(s)
+        echo "Bad input value(s)<br/>";
 } elseif ( $_POST['password'] != $_POST['password1'] ) {
-    // password mismatch
+    echo "Password mismatch<br/>";
 } else {
     $email      = $_POST['email'];
     $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -21,14 +21,25 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
 
     $db = AtomicDatabase::getInstance();
 
-    $db->insert("users", 
+    $result = $db->insert("users", 
         ['email' => $email, 'password' => $password, 
         'first_name' => $first, 'last_name' => $last,
         'phone' => $phone] 
     );
 
-    header("Location: https://bank.mind.contact/index.php");
-    die();
+    echo "POST: <br/>";
+    foreach ( $_POST as $key => $value ) {
+        echo "{$key} : {$value} <br/>";
+    }
+
+    echo "result: <br/>";
+    foreach( $result as $key => $value ) {
+        echo "{$key} : {$value} <br/>";
+    }
+    echo '<a href="https://bank.mind.contact/index.php">index</a>';
+
+    //header("Location: https://bank.mind.contact/index.php");
+    //die();
 } 
 
 
