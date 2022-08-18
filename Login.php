@@ -1,10 +1,14 @@
 <?php
 require_once 'Singleton.php';
+require_once 'Database.php';
 
 class Login {
     use Singleton;
+
+    protected $db;
     protected function __construct() {
         session_start();
+        $this->db = AtomicDatabase::getInstance();
     }
 
     public function loggedIn() {
@@ -16,11 +20,27 @@ class Login {
         unset($_SESSION['loggedIn']);
     }
 
-    public function logIn($username, $password) {
-        $this->hash($password);
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['username'] = $username;
-        return true;
+    public function logIn($email, $password) {
+        if( !filter_var($email, FILTER_VALIDATE_EMAIL) ) {
+            return false;
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $userdata = $db->select('users', 
+            ['first_name','last_name', 'phone'], 
+            ['email' => $email, 'password' => $hash]
+        );
+        
+        if ( sizeof($userdata) == 1 ) {
+            $_SESSION['loggedIn']   = true;
+            $_SESSION['email']      = $email;
+            $_SESSION['firstname']  = $userdata[0]['first_name'];
+            $_SESSION['lastname']   = $userdata[0]['last_name'];
+            $_SESSION['phone']      = $userdata[0]['phone'];
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>

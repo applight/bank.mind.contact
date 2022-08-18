@@ -32,26 +32,40 @@ class AtomicDatabase implements Database {
         $this->db->close();
     }
     
-    public function select($table, $values) {
-        $this->connect();
-        $vals = "";
-        for( $i=0; $i < sizeof($values); $i++ ) {
-            $vals = $vals . $values[$i];
-            if ( $i != sizeof($values) - 1 ) $vals = $vals . ",";
-        }
-        $result = $this->db->query("SELECT {$vals} FROM {$table}");
-        $this->close();
-        return $result;
-    }
-    
-    public function update($table, $map) {
-        $this->connect();
+    public function keyValEq($map) {
         $expr = "";
         foreach ($map as $key => $value) {
             if ($expr != "") $expr = $expr . ",";
-            $expr = $expr . $key . "=" . $value;
+            $expr = $expr . "'" . $key . "'='" . $value ."'";
         }
-        $result = $this->db->query("UPDATE {$table} SET ({$expr});");
+        return "(".$expr.")";
+    }
+
+    public function select($table, $values, $where="") {
+        $this->connect();
+
+        $vals = "";
+        for( $i=0; $i < sizeof($values); $i++ ) {
+            if ( $vals != "" ) $vals = $vals . ",";
+            $vals = $vals . "'".$values[$i]."'";
+        }
+
+        $result = null;
+        if ( $where != "" ) {
+            $expr = $this->keyValEq($where);
+            $result = $this->db->query("SELECT {$vals} FROM '{$table}' WHERE {$expr}");
+        } else {
+            $result = $this->db->query("SELECT {$vals} FROM '{$table}'");
+        }
+
+        $this->close();
+        return $result;
+    }
+
+    public function update($table, $map) {
+        $this->connect();
+        $expr = $this->keyValEq($map);
+        $result = $this->db->query("UPDATE '{$table}' SET {$expr};");
         $this->close();
     }
     
@@ -62,8 +76,8 @@ class AtomicDatabase implements Database {
         foreach ($map as $key => $value) {
             if ($keys != "") $keys = $keys . ",";
             if ($vals != "") $vals = $vals . ",";
-            $keys = $keys . $key;
-            $vals = $vals . $value;
+            $keys = $keys . "'".$key."'";
+            $vals = $vals . "'".$value."'";
         }
         $result = $this->db->query("INSERT INTO {$table} ({$keys}) VALUES ({$vals});");
         $this->close();
