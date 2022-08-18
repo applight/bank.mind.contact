@@ -30,6 +30,16 @@ $page = Page::getInstance();
 							return " type=\"hidden\" ";
 						}
 					}
+
+					function valueEq($pass, $field) {
+						if ( $_SESSION['thisPass'] == $pass ) {
+							return " value=\"\" ";
+						} elseif ( isset($_POST[$field]) ) {
+							return " value=\"{$_POST[$field]}\" ";
+						} else {
+							return " value=\"\" ";
+						}
+					}
 					
 					if (isset($_POST['email']) && isset($_POST['password']) && 
 						isset($_POST['password1']) && 
@@ -44,13 +54,13 @@ $page = Page::getInstance();
 
 								<!-- zeroeth pass -->
 								<div class="col-12">
-									<input <?php echo typeEq(0, "email"); ?> name="email" id="email" value=<?php echo "\"".$_POST['email']."\""; ?> placeholder="Email" />
+									<input <?php echo typeEq(0, "email"); ?> name="email" id="email" <?php echo valueEq(0, "email"); ?> placeholder="Email" />
 								</div>
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo typeEq(0, "password"); ?> name="password" id="password" value=<?php echo "\"".$_POST['password']."\""; ?>  placeholder="Password" />
+									<input <?php echo typeEq(0, "password"); ?> name="password" id="password" <?php echo valueEq(0, "password"); ?>  placeholder="Password" />
 								</div>
 								<div class="col-6 col-12-mobilep">
-									<input <?php echo typeEq(0, "password"); ?> name="password1" id="password1" value=<?php echo "\"".$_POST['password1']."\""; ?>  placeholder="Password" />
+									<input <?php echo typeEq(0, "password"); ?> name="password1" id="password1" <?php echo valueEq(0, "password1"); ?>  placeholder="Password" />
 								</div>
 								
 								<!-- first pass -->
