@@ -29,17 +29,17 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 				<p>MYSQL_USERNAME: <?php echo getenv("DB_USERNAME"); ?> <br/>
 				MYSQL_DATABASE:  <?php echo getenv("DB_DATABASE"); ?></p>
 				<form method="POST" action="logon.php">
-					<div class="row gtr-uniform gtr-50">
-						<div class="col-12">
+					<ul class="actions special"><div class="row gtr-uniform gtr-50">
+						<li><div class="col-12">
 							<input type="text" name="email" value="" placeholder="email" />
-						</div>
-						<div class="col-12">
+						</div></li>
+						<li><div class="col-12">
 							<input type="password" name="password" value="" placeholder="password" />
-						</div>
-						<div class="cols-12 actions special">
+						</div></li>
+						<li><div class="cols-12 actions special">
 							<input type="submit" name="submit" class="button primary" />
-						</div>
-					</div>
+						</div></li>
+					</div></ul>
 				</form>
 			</section>
 
