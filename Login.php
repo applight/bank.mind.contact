@@ -31,8 +31,8 @@ class Login {
             array('email' => $email, 'password' => $hash)
         );
         
-        $userdata_arr = $userdata->fetch_row();
-        if ( $userdata_arr != null && $userdata_arr != false ) {
+        if ( $userdata != null && $userdata != false ) {
+            $userdata_arr = $userdata->fetch_row();
             $_SESSION['loggedIn']   = true;
             $_SESSION['email']      = $email;
             $_SESSION['firstname']  = $userdata_arr['first_name'];
