@@ -1,7 +1,7 @@
 <?php
 require_once 'Singleton.php';
 require_once 'Login.php';
-require_once 'AtomicDatabase.php';
+require_once 'Database.php';
 
 class Page {
     use Singleton;
