@@ -43,7 +43,7 @@ class Page {
 
     public function nav() {
         $loginout = "";
-        if ($this->login->isLoggedIn()) {
+        if ($this->login->loggedIn()) {
             $loginout = '<li><a href="logout.php" class="button">Log Out</a></li>';
         } else {
             $loginout = '<li><a href="signup.php" class="button">Sign Up</a></li>'
