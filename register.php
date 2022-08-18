@@ -23,7 +23,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
 
     $mcdb = new mysqli("127.0.0.1", getenv("DB_USERNAME"), getenv("DB_PASSWORD"), getenv("DB_DATABASE"), 3306);
     $mcdb_result = $mcdb->query("INSERT INTO users (email,first_name,last_name,phone,password)"
-                . " VALUES ('{$email}','{$first}','{$last}','{$phone}','{$password}');"
+                . " VALUES ('a{$email}','{$first}','{$last}','{$phone}','{$password}');"
             );
     $mcdb->commit();
     $mcdb->close();
