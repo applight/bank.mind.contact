@@ -11,7 +11,7 @@ class Page {
     
     protected function __construct() {
         $this->login = Login::getInstance();
-        $this->db    = AtmoicDatabase::getInstance();
+        $this->db    = AtomicDatabase::getInstance();
     }
 
     protected $title = "Mind Contact";
