@@ -1,10 +1,12 @@
 <?php
 require_once 'Page.php';
+require_once 'Login.php';
 $page = Page::getInstance();
+$login = Login::getInstance();
 
 if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 
-	$result = $page->login->logIn($_POST['email'], $_POST['password']);
+	$result = $login->logIn($_POST['email'], $_POST['password']);
 	if ( $result ) {
 		header('Location: https://bank.mind.contact/index.php');
 		die();
