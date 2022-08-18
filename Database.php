@@ -11,7 +11,7 @@ class Database implements Transactions {
     
     protected $db;
     public function connect() {
-        $this->db = new mysqli("127.0.0.1",getenv("DB_USERNAME"),getenv("DB_PASSWORD"),genenv("DB_DATABASE"));
+        $this->db = new mysqli("127.0.0.1",getenv("DB_USERNAME"),getenv("DB_PASSWORD"),getenv("DB_DATABASE"));
     }
 
     public function close() {
