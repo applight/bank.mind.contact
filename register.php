@@ -21,6 +21,11 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
 
     $db = AtomicDatabase::getInstance();
 
+    $mcdb = mysqli("127.0.0.1", getenv("DB_USERNAME"), getenv("DB_PASSWORD"), getenv("DB_DATABASE"));
+    $mcdb_result = $mcdb->query("INSERT INTO 'users' ('email','first_name','last_name','phone','password')"
+                . " VALUES ('{$email}','{$first}','{$last}','{$phone}','{$password}');"
+            );
+
     $result = $db->insert("users", 
         array("email" => $email, "password" => $password, 
         "first_name" => $first, "last_name" => $last,
@@ -32,15 +37,30 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
         echo "{$key} : {$value} <br/>";
     }
     
-    $arr = mysqli_fetch_array($result);
-    echo "result: {$arr} <br/>";
-    foreach ( $arr as $key => $value ) {
-        echo "{$key} : {$value} <br/>";
-        foreach ( $value as $k => $v ) {
-            echo " --{$key}-- {$k} : {$v} <br/>";
+    if ( !$mcdb_result ) {
+        echo "failed mcdb<br/>";
+    } else {
+        $arr = mysqli_fetch_array($mcdb_result);
+        foreach ( $arr as $key => $value ) {
+            echo "{$key} : {$value} <br/>";
+            foreach ( $value as $k => $v ) {
+                echo " --{$key}-- {$k} : {$v} <br/>";
+            }
         }
     }
-    
+
+    if ( !$result ) {
+        echo "failed class db<br/>";
+    } else {
+        $arr = mysqli_fetch_array($result);
+        foreach ( $arr as $key => $value ) {
+            echo "{$key} : {$value} <br/>";
+            foreach ( $value as $k => $v ) {
+                echo " --{$key}-- {$k} : {$v} <br/>";
+            }
+        }
+    }
+
     echo '<a href="https://bank.mind.contact/index.php">index</a>';
 
     //header("Location: https://bank.mind.contact/index.php");

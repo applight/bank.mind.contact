@@ -33,7 +33,7 @@ class Database implements Transactions {
             if ( $vals != "" ) $vals = $vals . ",";
             $vals = $vals . "'".$values[$i]."'";
         }
-        
+
         if ( $values == "*" ) $vals = "*";
 
         if ( $where != "" ) {
@@ -58,7 +58,9 @@ class Database implements Transactions {
             $keys = $keys . "'".$key."'";
             $vals = $vals . "'".$value."'";
         }
-        return $this->db->query("INSERT INTO {$table} ({$keys}) VALUES ({$vals});");
+        $keys = "(".$keys.")";
+        $vals = "(".$vals.")";
+        return $this->db->query("INSERT INTO {$table} {$keys} VALUES {$vals} ;");
     }
 }
 
