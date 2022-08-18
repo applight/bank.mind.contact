@@ -31,56 +31,60 @@ $page = Page::getInstance();
 						</header>
 						<form method="post" action="register.php">
 							<div class="row gtr-uniform gtr-50">
-								<div class="col-3 col-12-mobilep">
-									<input type="text" name="firstname" id="firstname" value="" placeholder="First Name" />
+								<div class ="col-4 col-12-mobilep">
+									<input type="text" name="username" id="username" value="" placeholder="Username" />
 								</div>
-								<div class="col-3 col-12-mobilep">
-									<input type="text" name="lastname" id="lastname" value="" placeholder="Last Name" />
+								<div class="col-4 col-12-mobilep">
+									<input type="password" name="password" id="password" value="" placeholder="Password" />
+								</div>
+								<div class="col-4 col-12-mobilep">
+									<input type="password" name="password1" id="password1" value="" placeholder="Password" />
 								</div>
 								<div class="col-6 col-12-mobilep">
+									<input type="text" name="firstname" id="firstname" value="" placeholder="First name" />
+								</div>
+								<div class="col-6 col-12-mobilep">
+									<input type="text" name="lastname" id="lastname" value="" placeholder="Last name" />
+								</div>
+								<div class="col-12">
 									<input type="email" name="email" id="email" value="" placeholder="Email" />
 								</div>
 								<div class="col-12">
-									<select name="category" id="category">
-										<option value="">- Category -</option>
-										<option value="1">Manufacturing</option>
-										<option value="1">Shipping</option>
-										<option value="1">Administration</option>
-										<option value="1">Human Resources</option>
+									<input type="text" name="phone" id="phone" value="" placeholder="Phone number" />
+								</div>
+								<div class="col-12">
+									<input type="text" name="address1" id="address1" value="" placeholder="Street address" />
+								</div>
+								<div class="col-12">
+									<input type="text" name="address2" id="address2" value="" placeholder="Address line 2" />
+								</div>
+								<div class="col-6 col-12-mobilep">
+									<input type="text" name="city" id="city" value="" placeholder="Town/City" />
+								</div>
+								<div class="col-3 col-12-mobilep">
+									<input type="text" name="state" id="state" value="" placeholder="State" />
+									<select name="state" id="state">
+										<option value="">- State -</option>
+										<option value="NH">New Hampshire</option>
+										<option value="MA">Massachusetts</option>
+										<option value="XX">Mars</option>
+										<option value="YL">Yolo</option>
 									</select>
 								</div>
-								<div class="col-4 col-12-narrower">
-									<input type="radio" id="priority-low" name="priority" checked>
-									<label for="priority-low">Low Priority</label>
-								</div>
-								<div class="col-4 col-12-narrower">
-									<input type="radio" id="priority-normal" name="priority">
-									<label for="priority-normal">Normal Priority</label>
-								</div>
-								<div class="col-4 col-12-narrower">
-									<input type="radio" id="priority-high" name="priority">
-									<label for="priority-high">High Priority</label>
-								</div>
-								<div class="col-6 col-12-narrower">
-									<input type="checkbox" id="copy" name="copy">
-									<label for="copy">Email me a copy of this message</label>
-								</div>
-								<div class="col-6 col-12-narrower">
-									<input type="checkbox" id="human" name="human" checked>
-									<label for="human">I am a human and not a robot</label>
+								<div class="col-3 col-12-mobilep">
+									<input type="text" name="zipcode" id="zipcode" value="" placeholder="Zip code" />
 								</div>
 								<div class="col-12">
 									<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 								</div>
 								<div class="col-12">
 									<ul class="actions">
-										<li><input type="submit" value="Send Message" /></li>
+										<li><input type="submit" value="Sign Up!" /></li>
 										<li><input type="reset" value="Reset" class="alt" /></li>
 									</ul>
 								</div>
 							</div>
 						</form>
-
 					</section>
 
 					<section class="box special features">
