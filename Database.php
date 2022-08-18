@@ -33,6 +33,8 @@ class Database implements Transactions {
             if ( $vals != "" ) $vals = $vals . ",";
             $vals = $vals . "'".$values[$i]."'";
         }
+        
+        if ( $values == "*" ) $vals = "*";
 
         if ( $where != "" ) {
             $expr = $this->keyValEq($where);
