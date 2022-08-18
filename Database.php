@@ -23,31 +23,33 @@ class Database implements Transactions {
         $expr = "";
         foreach ($map as $key => $value) {
             if ($expr != "") $expr = $expr . ",";
-            $expr = $expr . "'" . $key . "'='" . $value ."'";
+            $expr = $expr . $key . "='" . $value ."'";
         }
         return "(".$expr.")";
     }
 
     public function select($table, $values, $where="") {
         $vals = "";
-        for( $i=0; $i < sizeof($values); $i++ ) {
-            if ( $vals != "" ) $vals = $vals . ",";
-            $vals = $vals . "'".$values[$i]."'";
+        if ( $values == "*" ) { 
+            $vals = "*";
+        } else {
+            for( $i=0; $i < sizeof($values); $i++ ) {
+                if ( $vals != "" ) $vals = $vals . ",";
+                $vals = $vals . $values[$i];
+            }
         }
-
-        if ( $values == "*" ) $vals = "*";
 
         if ( $where != "" ) {
             $expr = $this->keyValEq($where);
-            return $this->db->query("SELECT {$vals} FROM '{$table}' WHERE {$expr}");
+            return $this->db->query("SELECT {$vals} FROM {$table} WHERE {$expr}");
         } else {
-            return $this->db->query("SELECT {$vals} FROM '{$table}'");
+            return $this->db->query("SELECT {$vals} FROM {$table}");
         }
     }
 
     public function update($table, $map) {
         $expr = $this->keyValEq($map);
-        return $this->db->query("UPDATE '{$table}' SET {$expr};");
+        return $this->db->query("UPDATE {$table} SET {$expr};");
     }
     
     public function insert($table, $map) {
@@ -56,7 +58,7 @@ class Database implements Transactions {
         foreach ($map as $key => $value) {
             if ($keys != "") $keys = $keys . ",";
             if ($vals != "") $vals = $vals . ",";
-            $keys = $keys . "'".$key."'";
+            $keys = $keys . $key;
             $vals = $vals . "'".$value."'";
         }
         $keys = "(".$keys.")";
