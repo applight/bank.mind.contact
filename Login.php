@@ -31,8 +31,7 @@ class Login {
             array('email' => $email, 'password' => $hash)
         );
         
-        
-        if ( $userdata_arr = $db->fetch_array($userdata) ) {
+        if ( $userdata_arr = mysqli_fetch_array($userdata) ) {
             $_SESSION['loggedIn']   = true;
             $_SESSION['email']      = $email;
             $_SESSION['firstname']  = $userdata_arr[0]['first_name'];
