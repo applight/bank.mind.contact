@@ -32,7 +32,14 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
         echo "{$key} : {$value} <br/>";
     }
 
-    echo "result: {$result} <br/>";
+    $arr = $result->fetch_array();
+    echo "result: {$arr} <br/>";
+    foreach ( $arr as $key => $value ) {
+        echo "{$key} : {$value} <br/>";
+        foreach ( $value as $k => $v ) {
+            echo " --{$key}-- {$k} : {$v} <br/>";
+        }
+    }
     
     echo '<a href="https://bank.mind.contact/index.php">index</a>';
 
