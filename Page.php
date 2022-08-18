@@ -55,7 +55,7 @@ class Page {
         . '<ul><li><a href="#">Debit</a></li>'
         . '<li><a href="#">Credit</a></li>'
         . '</ul></li></ul></li>'
-        . '<li><a href="signup" class="button">Sign Up</a></li></ul></nav></header>';
+        . '<li><a href="signup.php" class="button">Sign Up</a></li></ul></nav></header>';
     }
 
     public function main() {
