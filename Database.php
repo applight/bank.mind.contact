@@ -19,9 +19,9 @@ class AtomicDatabase implements Database {
     private $db;
 
     protected function __contruct() {
-        $this->username = apache_getenv("MYSQL_USERNAME");
-        $this->password = apache_getenv("MYSQL_PASSWORD");
-        $this->database = apache_getenv("MYSQL_DATABASE");
+        $this->username = getenv("DB_USERNAME");
+        $this->password = getenv("DB_PASSWORD");
+        $this->database = getenv("DB_DATABASE");
     }
 
     public function connect() {
