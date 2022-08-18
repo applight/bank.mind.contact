@@ -11,10 +11,11 @@ class Database implements Transactions {
     
     protected $db;
     public function connect() {
-        $this->db = new mysqli("127.0.0.1",getenv("DB_USERNAME"),getenv("DB_PASSWORD"),getenv("DB_DATABASE"));
+        $this->db = new mysqli("127.0.0.1",getenv("DB_USERNAME"),getenv("DB_PASSWORD"),getenv("DB_DATABASE"), 3306);
     }
 
     public function close() {
+        $this->db->commit();
         $this->db->close();
     }
 
