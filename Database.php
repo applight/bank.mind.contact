@@ -67,20 +67,20 @@ class AtomicDatabase extends Database implements Transactions {
 
     public function select($table, $values, $where="") {
         $this->connect();
-        $result = $this->parent->select($table, $values, $where);
+        $result = parent::select($table, $values, $where);
         $this->close();
         return $result;
     }
 
     public function update($table, $map) {
         $this->connect();
-        $result = $this->parent->update($table, $map);
+        $result = parent::update($table, $map);
         $this->close();
     }
     
     public function insert($table, $map) {
         $this->connect();
-        $result = $this->parent->insert($table, $map);
+        $result = parent::insert($table, $map);
         $this->close();
     }
 }
