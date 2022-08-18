@@ -27,8 +27,8 @@ class Login {
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
         $userdata = $this->db->select('users', 
-            ['first_name','last_name', 'phone'], 
-            ['email' => $email, 'password' => $hash]
+            array('first_name','last_name', 'phone'), 
+            array('email' => $email, 'password' => $hash)
         );
         
         if ( sizeof($userdata) == 1 ) {

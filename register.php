@@ -22,9 +22,9 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
     $db = AtomicDatabase::getInstance();
 
     $result = $db->insert("users", 
-        ['email' => $email, 'password' => $password, 
-        'first_name' => $first, 'last_name' => $last,
-        'phone' => $phone] 
+        array("email" => $email, "password" => $password, 
+        "first_name" => $first, "last_name" => $last,
+        "phone" => $phone) 
     );
 
     echo "POST: <br/>";
