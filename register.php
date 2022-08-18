@@ -31,8 +31,8 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
     foreach ( $_POST as $key => $value ) {
         echo "{$key} : {$value} <br/>";
     }
-
-    $arr = $result->fetch_array();
+    
+    $arr = mysqli_fetch_array($result);
     echo "result: {$arr} <br/>";
     foreach ( $arr as $key => $value ) {
         echo "{$key} : {$value} <br/>";
