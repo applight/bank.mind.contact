@@ -47,7 +47,7 @@ class Page {
             $loginout = '<li><a href="logout.php" class="button">Log Out</a></li>';
         } else {
             $loginout = '<li><a href="signup.php" class="button">Sign Up</a></li>'
-                        . '<li><a href="login.php" class="button">Log In</a></li>' ;
+                        . '<li><a href="logon.php" class="button">Log In</a></li>' ;
         }
         return '<header id="header" class="alt"><h1>DollarUp! &nbsp; <a href="https://mind.contact">Mind Contact</a></h1>'
         . '<nav id="nav"><ul>'
