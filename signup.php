@@ -24,67 +24,18 @@ $page = Page::getInstance();
 			<section id="banner">
 				<h2>Alpha</h2>
 				<p>Another fine responsive site template freebie by HTML5 UP.</p>
-					<section class="box">
-						<form method="post" action="register.php">
-							<div class="row gtr-uniform gtr-50">
-								<div class ="col-4 col-12-mobilep">
-									<input type="text" name="username" id="username" value="" placeholder="Username" />
-								</div>
-								<div class="col-4 col-12-mobilep">
-									<input type="password" name="password" id="password" value="" placeholder="Password" />
-								</div>
-								<div class="col-4 col-12-mobilep">
-									<input type="password" name="password1" id="password1" value="" placeholder="Password" />
-								</div>
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="firstname" id="firstname" value="" placeholder="First name" />
-								</div>
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="lastname" id="lastname" value="" placeholder="Last name" />
-								</div>
-								<div class="col-12">
-									<input type="email" name="email" id="email" value="" placeholder="Email" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="phone" id="phone" value="" placeholder="Phone number" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="address1" id="address1" value="" placeholder="Street address" />
-								</div>
-								<div class="col-12">
-									<input type="text" name="address2" id="address2" value="" placeholder="Address line 2" />
-								</div>
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="city" id="city" value="" placeholder="Town/City" />
-								</div>
-								<div class="col-3 col-12-mobilep">
-									<select name="state" id="state">
-										<option value="">- State -</option>
-										<option value="NH">New Hampshire</option>
-										<option value="MA">Massachusetts</option>
-										<option value="XX">Mars</option>
-										<option value="YL">Yolo</option>
-									</select>
-								</div>
-								<div class="col-3 col-12-mobilep">
-									<input type="text" name="zipcode" id="zipcode" value="" placeholder="Zip code" />
-								</div>
-								<div class="col-12">
-									<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
-								</div>
-								<div class="col-12">
-									<ul class="actions">
-										<li><input type="submit" value="Sign Up!" class="button" /></li>
-										<li><input type="reset" value="Reset" class="button alt" /></li>
-									</ul>
-								</div>
-							</div>
-						</form>
-					</section>
 			</section>
 
 			<!-- Main -->
 				<section id="main" class="container">
+				<section class="box special">
+						<header class="major">
+							<h2>Sign up for <?php echo $page->title(); ?> !
+							<br />
+							With 6% interest on your funds!</h2>
+							<p>Putting better-than-savings interest in your checking account</p>
+						</header>
+					</section>
 					<section class="box">
 						<form method="post" action="register.php">
 							<div class="row gtr-uniform gtr-50">
@@ -129,9 +80,6 @@ $page = Page::getInstance();
 								</div>
 								<div class="col-3 col-12-mobilep">
 									<input type="text" name="zipcode" id="zipcode" value="" placeholder="Zip code" />
-								</div>
-								<div class="col-12">
-									<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
 								</div>
 								<div class="col-12">
 									<ul class="actions">
@@ -141,15 +89,6 @@ $page = Page::getInstance();
 								</div>
 							</div>
 						</form>
-					</section>
-					
-					<section class="box special">
-						<header class="major">
-							<h2>Sign up for <?php echo $page->title(); ?> !
-							<br />
-							With 6% interest on your funds!</h2>
-							<p>Putting better-than-savings interest in your checking account</p>
-						</header>
 					</section>
 
 					<section class="box special features">
