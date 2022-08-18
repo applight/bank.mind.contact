@@ -31,12 +31,13 @@ class Login {
             array('email' => $email, 'password' => $hash)
         );
         
-        if ( $userdata_arr = mysqli_fetch_array($userdata) ) {
+        $userdata_arr = $userdata->fetch_row();
+        if ( $userdata_arr != null && $userdata_arr != false ) {
             $_SESSION['loggedIn']   = true;
             $_SESSION['email']      = $email;
-            $_SESSION['firstname']  = $userdata_arr[0]['first_name'];
-            $_SESSION['lastname']   = $userdata_arr[0]['last_name'];
-            $_SESSION['phone']      = $userdata_arr[0]['phone'];
+            $_SESSION['firstname']  = $userdata_arr['first_name'];
+            $_SESSION['lastname']   = $userdata_arr['last_name'];
+            $_SESSION['phone']      = $userdata_arr['phone'];
             return true;
         } else {
             return false;
