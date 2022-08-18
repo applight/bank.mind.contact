@@ -8,14 +8,14 @@ class Page {
 
     protected $login;
     protected $db;
-    
+    protected $title = "Mind Contact";
+
     protected function __construct() {
         $this->login = Login::getInstance();
         $this->db    = AtomicDatabase::getInstance();
+        $this->title = "DollarUp!";
     }
 
-    protected $title = "Mind Contact";
-    
     public function setTitle( $title ) {
         $this->title = $title;
     }
@@ -42,7 +42,14 @@ class Page {
     }
 
     public function nav() {
-        return '<header id="header" class="alt"><h1>Dollar up!<a href="https://mind.contact">&nbsp;Mind Contact</a></h1>'
+        $loginout = "";
+        if ($this->login->isLoggedIn()) {
+            $loginout = "<li><a href=\"logout.php\" class=\"button\">Log Out</a></li>";
+        } else {
+            $loginout = "<li><a href=\"signup.php\" class=\"button\">Sign Up</a></li>"
+                        ."<li><a href=\"login.php\" class=\"button\">Log In</a></li>" ;
+        }
+        return '<header id="header" class="alt"><h1>DollarUp! &nbsp; <a href="https://mind.contact">Mind Contact</a></h1>'
         . '<nav id="nav"><ul>'
         . '<li><a href="index.php">Home</a></li>'
         . '<li><a href="#" class="icon solid fa-angle-down">Accounts</a>'
@@ -55,7 +62,8 @@ class Page {
         . '<ul><li><a href="#">Debit</a></li>'
         . '<li><a href="#">Credit</a></li>'
         . '</ul></li></ul></li>'
-        . '<li><a href="signup.php" class="button">Sign Up</a></li></ul></nav></header>';
+        . $loginout
+        . '</ul></nav></header>';
     }
 
     public function main() {

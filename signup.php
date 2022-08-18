@@ -19,34 +19,23 @@ $page = Page::getInstance();
 		<div id="page-wrapper">
 
 			<?php echo $page->nav(); ?>
-
-			<!-- Banner -->
-				<section id="banner">
-					<h2>Alpha</h2>
-					<p>Another fine responsive site template freebie by HTML5 UP.</p>
-					<ul class="actions special">
-						<li><a href="#" class="button primary">Sign Up</a></li>
-						<li><a href="#" class="button">Learn More</a></li>
-					</ul>
-				</section>
-
 			<!-- Main -->
 				<section id="main" class="container">
 
 					<section class="box special">
 						<header class="major">
-							<h2>Introducing the ultimate mobile app
+							<h2>Sign up for <?php echo $page->title(); ?> !
 							<br />
-							for doing stuff with your phone</h2>
-							<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare<br />
-							adipiscing nunc adipiscing. Condimentum turpis massa.</p>
+							With 6% interest on your funds!</h2>
+							<p>Putting better-than-savings interest in your checking account</p>
 						</header>
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-
-						<form method="post" action="#">
+						<form method="post" action="register.php">
 							<div class="row gtr-uniform gtr-50">
-								<div class="col-6 col-12-mobilep">
-									<input type="text" name="name" id="name" value="" placeholder="Name" />
+								<div class="col-3 col-12-mobilep">
+									<input type="text" name="firstname" id="firstname" value="" placeholder="First Name" />
+								</div>
+								<div class="col-3 col-12-mobilep">
+									<input type="text" name="lastname" id="lastname" value="" placeholder="Last Name" />
 								</div>
 								<div class="col-6 col-12-mobilep">
 									<input type="email" name="email" id="email" value="" placeholder="Email" />
