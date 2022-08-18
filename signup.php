@@ -22,20 +22,14 @@ $page = Page::getInstance();
 
 			<!-- Banner -->
 			<section id="banner">
-				<h2>Alpha</h2>
-				<p>Another fine responsive site template freebie by HTML5 UP.</p>
+				<h2>Sign up for <?php echo $page->title(); ?> !
+				<br />
+				With 6% interest on your funds!</h2>
+				<p>Putting better-than-savings interest in your checking account</p>
 			</section>
 
 			<!-- Main -->
 				<section id="main" class="container">
-				<section class="box special">
-						<header class="major">
-							<h2>Sign up for <?php echo $page->title(); ?> !
-							<br />
-							With 6% interest on your funds!</h2>
-							<p>Putting better-than-savings interest in your checking account</p>
-						</header>
-					</section>
 					<section class="box">
 						<form method="post" action="register.php">
 							<div class="row gtr-uniform gtr-50">
