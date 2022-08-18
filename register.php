@@ -32,7 +32,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
         echo "{$key} : {$value} <br/>";
     }
 
-    echo "result: <br/>";
+    echo "result: {$result} <br/>";
     foreach( $result as $key => $value ) {
         echo "{$key} : {$value} <br/>";
     }
