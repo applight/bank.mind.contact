@@ -1,111 +1,21 @@
 <?php
-
-trait Singleton {
-    private static $instance = null;
-    public static function getInstance() {
-        if ( self::$instance == null ) self::$instance = new static();
-        return self::$instance;
-    }
-}
-
-interface Database {
-    public function connect();
-    public function close();
-    public function select($table, $values);
-    public function update($table, $map);
-    public function insert($table, $map);
-}
-
-class AtomicDatabase implements Database {
-    use Singleton;
-    
-    private $username;
-    private $password;
-    private $database;
-
-    private $db;
-
-    protected function __contruct() {
-        $this->username = getenv("MYSQL_USERNAME");
-        $this->password = getenv("MYSQL_PASSWORD");
-        $this->database = getenv("MYSQL_DATABASE");
-    }
-
-    public function connect() {
-        $this->db = new mysqli("localhost",$this->username,$this->password,$this->database);
-    }
-
-    public function close() {
-        $this->db->close();
-    }
-    
-    public function select($table, $values) {
-        $this->connect();
-        $vals = "";
-        for( $i=0; $i < sizeof($values); $i++ ) {
-            $vals = $vals . $values[$i];
-            if ( $i != sizeof($values) - 1 ) $vals = $vals . ",";
-        }
-        $result = $this->db->query("SELECT {$vals} FROM {$table}");
-        $this->close();
-        return $result;
-    }
-    
-    public function update($table, $map) {
-        $this->connect();
-        $expr = "";
-        foreach ($map as $key => $value) {
-            if ($expr != "") $expr = $expr . ",";
-            $expr = $expr . $key . "=" . $value;
-        }
-        $result = $this->db->query("UPDATE {$table} SET ({$expr});");
-        $this->close();
-    }
-    
-    public function insert($table, $map) {
-        $this->connect();
-        $keys = "";
-        $vals = "";
-        foreach ($map as $key => $value) {
-            if ($keys != "") $keys = $keys . ",";
-            if ($vals != "") $vals = $vals . ",";
-            $keys = $keys . $key;
-            $vals = $vals . $value;
-        }
-        $result = $this->db->query("INSERT INTO {$table} ({$keys}) VALUES ({$vals});");
-        $this->close();
-    }
-}
-
-class Login {
-    use Singleton;
-    protected function __construct() {
-        session_start();
-    }
-
-    public function loggedIn() {
-        if ( isset($_SESSION) && isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] ) return true;
-        else return false;
-    }
-
-    public function logOut() {
-        unset($_SESSION['loggedIn']);
-    }
-
-    public function logIn($username, $password) {
-        $this->hash($password);
-        $_SESSION['loggedIn'] = true;
-        $_SESSION['username'] = $username;
-        return true;
-    }
-}
+require_once 'Singleton.php';
+require_once 'Login.php';
+require_once 'AtomicDatabase.php';
 
 class Page {
     use Singleton;
-    protected function __construct() {}
 
-    protected $title = "Title";
+    protected $login;
+    protected $db;
+    
+    protected function __construct() {
+        $this->login = Login::getInstance();
+        $this->db    = AtmoicDatabase::getInstance();
+    }
 
+    protected $title = "Mind Contact";
+    
     public function setTitle( $title ) {
         $this->title = $title;
     }
