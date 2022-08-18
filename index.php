@@ -15,7 +15,7 @@ $page = Page::getInstance();
 			<section id="banner">
 				<h2>Alpha</h2>
 				<p>MYSQL_USERNAME: <?php echo getenv("DB_USERNAME"); ?> <br/>
-				MYSQL_DATABASE:  <?php echo genenv("DB_DATABASE"); ?></p>
+				MYSQL_DATABASE:  <?php echo getenv("DB_DATABASE"); ?></p>
 				<ul class="actions special">
 					<li><a href="signup.php" class="button primary">Sign Up</a></li>
 					<li><a href="#" class="button">Learn More</a></li>
