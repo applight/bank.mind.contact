@@ -24,7 +24,8 @@ $page = Page::getInstance();
 			<section id="banner">
 				<h2>Alpha</h2>
 				<p>Another fine responsive site template freebie by HTML5 UP.</p>
-				<form method="post" action="register.php">
+					<section class="box">
+						<form method="post" action="register.php">
 							<div class="row gtr-uniform gtr-50">
 								<div class ="col-4 col-12-mobilep">
 									<input type="text" name="username" id="username" value="" placeholder="Username" />
@@ -57,7 +58,6 @@ $page = Page::getInstance();
 									<input type="text" name="city" id="city" value="" placeholder="Town/City" />
 								</div>
 								<div class="col-3 col-12-mobilep">
-									<input type="text" name="state" id="state" value="" placeholder="State" />
 									<select name="state" id="state">
 										<option value="">- State -</option>
 										<option value="NH">New Hampshire</option>
@@ -80,6 +80,7 @@ $page = Page::getInstance();
 								</div>
 							</div>
 						</form>
+					</section>
 			</section>
 
 			<!-- Main -->
@@ -118,7 +119,6 @@ $page = Page::getInstance();
 									<input type="text" name="city" id="city" value="" placeholder="Town/City" />
 								</div>
 								<div class="col-3 col-12-mobilep">
-									<input type="text" name="state" id="state" value="" placeholder="State" />
 									<select name="state" id="state">
 										<option value="">- State -</option>
 										<option value="NH">New Hampshire</option>
@@ -135,7 +135,7 @@ $page = Page::getInstance();
 								</div>
 								<div class="col-12">
 									<ul class="actions">
-										<li><input type="submit" value="Sign Up!" /></li>
+										<li><input type="submit" value="Sign Up!" class="button"/></li>
 										<li><input type="reset" value="Reset" class="alt" /></li>
 									</ul>
 								</div>
