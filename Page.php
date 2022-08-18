@@ -44,10 +44,10 @@ class Page {
     public function nav() {
         $loginout = "";
         if ($this->login->isLoggedIn()) {
-            $loginout = "<li><a href=\"logout.php\" class=\"button\">Log Out</a></li>";
+            $loginout = '<li><a href="logout.php" class="button">Log Out</a></li>';
         } else {
-            $loginout = "<li><a href=\"signup.php\" class=\"button\">Sign Up</a></li>"
-                        ."<li><a href=\"login.php\" class=\"button\">Log In</a></li>" ;
+            $loginout = '<li><a href="signup.php" class="button">Sign Up</a></li>'
+                        . '<li><a href="login.php" class="button">Log In</a></li>' ;
         }
         return '<header id="header" class="alt"><h1>DollarUp! &nbsp; <a href="https://mind.contact">Mind Contact</a></h1>'
         . '<nav id="nav"><ul>'
