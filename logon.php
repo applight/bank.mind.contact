@@ -18,7 +18,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 		}
 	}
 	$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	echo "PASSWORD is {$_POST['password']} and HASH is {$hash}<br/>";
+	echo "PASSWORD is {$_POST['password']} and HASH is {$hash} and resulthash is {$result['password']}<br/>";
 
 	if( password_verify($_POST['password'], $result['password']) ) {
 		echo "password matches<br/>";
