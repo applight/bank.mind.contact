@@ -2,7 +2,7 @@
 require_once 'Singleton.php';
 
 interface Transactions {
-    public function select($table, $values);
+    public function select($table, $values="*", $where="");
     public function update($table, $map);
     public function insert($table, $map);
 }
@@ -66,7 +66,7 @@ class AtomicDatabase extends Database implements Transactions {
     protected function __contruct() {
     }
 
-    public function select($table, $values, $where="") {
+    public function select($table, $values="*", $where="") {
         $this->connect();
         $result = parent::select($table, $values, $where);
         $this->close();
