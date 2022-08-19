@@ -32,12 +32,12 @@ class Login {
 
         if ( $userdata != null && $userdata != false ) {
             $userdata_arr = $userdata->fetch_row();
-            if (password_verify($password, $userdata_arr['password']) ) {
+            if (password_verify($password, $userdata_arr[0]) ) {
                 $_SESSION['loggedIn']   = true;
                 $_SESSION['email']      = $email;
-                $_SESSION['firstname']  = $userdata_arr['first_name'];
-                $_SESSION['lastname']   = $userdata_arr['last_name'];
-                $_SESSION['phone']      = $userdata_arr['phone'];
+                $_SESSION['firstname']  = $userdata_arr[1];
+                $_SESSION['lastname']   = $userdata_arr[2];
+                $_SESSION['phone']      = $userdata_arr[3];
                 return $userdata_arr;
             } else {
                 return $userdata_arr;
