@@ -7,11 +7,23 @@ $login = Login::getInstance();
 if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 
 	$result = $login->logIn($_POST['email'], $_POST['password']);
+	if ($result == null) {
+		echo "result is null <br/>";
+	} elseif ($result == false) {
+		echo "result is false <br/>";
+	} else {
+		echo "result is non false or null<br/>";
+		foreach	( $result->fetch_row() as $k => $v ) {
+			echo "--{$k}-- {$v} <br/>";
+		}
+	}
+
 	if ( $result ) {
 		header('Location: https://bank.mind.contact/index.php');
 		die();
 	} else {
 		echo "failed to login!";
+		//header('Location: https://bank.mind.contact/logon.php?error=failed');
 		die();
 	}
 }
