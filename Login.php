@@ -38,9 +38,9 @@ class Login {
                 $_SESSION['firstname']  = $userdata_arr['first_name'];
                 $_SESSION['lastname']   = $userdata_arr['last_name'];
                 $_SESSION['phone']      = $userdata_arr['phone'];
-                return true;
+                return $userdata_arr;
             } else {
-                return $userdata;
+                return $userdata_arr;
             }
         } else {
             return false;
