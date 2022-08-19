@@ -33,11 +33,7 @@ class Database implements Transactions {
         if ( $values == "*" ) { 
             $vals = "*";
         } else {
-            for( $i=0; $i < sizeof($values); $i++ ) {
-                if ( $vals != "" ) $vals = $vals . ",";
-                $vals = $vals . $values[$i];
-            }
-            $vals = "(".$vals.")";
+            $vals = "(" . implode(",", $values) . ")";
         }
 
         if ( $where != "" ) {
