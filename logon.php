@@ -4,34 +4,15 @@ require_once 'Login.php';
 $page = Page::getInstance();
 $login = Login::getInstance();
 
+// check for login attempts
 if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
-
 	$result = $login->logIn($_POST['email'], $_POST['password']);
-	if ($result == null) {
-		echo "result is null <br/>";
-	} elseif ($result == false) {
-		echo "result is false <br/>";
-	} else {
-		echo "result is non false or null<br/>";
-		foreach	( $result as $k => $v ) {
-			echo "--{$k}-- {$v} <br/>";
-		}
-	}
-	$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	echo "PASSWORD is {$_POST['password']} and HASH is {$hash} and resulthash is {$result[0]}<br/>";
-
-	if( password_verify($_POST['password'], $result[0]) ) {
-		echo "password matches<br/>";
-	} else {
-		echo "password mistmatch<br/>";
-	}
 
 	if ( $result ) {
-		//header('Location: https://bank.mind.contact/index.php');
+		header('Location: https://bank.mind.contact/index.php');
 		die();
 	} else {
-		echo "failed to login!";
-		//header('Location: https://bank.mind.contact/logon.php?error=failed');
+		header('Location: https://bank.mind.contact/logon.php?error=failed');
 		die();
 	}
 }
@@ -52,10 +33,10 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 				<form method="POST" action="logon.php">
 					<ul class="box actions special"><div class="row gtr-uniform gtr-50">
 						<li><div class="col-12">
-							<input type="text" name="email" value="" placeholder="email" />
+							<input style="color: black;" type="text" name="email" value="" placeholder="email" />
 						</div></li>
 						<li><div class="col-12">
-							<input type="password" name="password" value="" placeholder="password" />
+							<input style="color: black;" type="password" name="password" value="" placeholder="password" />
 						</div></li>
 						<li><div class="cols-12 actions special">
 							<input type="submit" name="submit" class="button primary" />
