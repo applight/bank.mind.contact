@@ -14,7 +14,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
     header("Location: https://bank.mind.contact/signup.php?error=passwordmismatch");
 } else {
     $email      = $_POST['email'];
-    $password   = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $hash       = password_hash(trim($_POST['password']), PASSWORD_DEFAULT);
     $first      = $_POST['firstname'];
     $last       = $_POST['lastname'];
     $phone      = $_POST['phone'];
@@ -22,7 +22,7 @@ if (    !isset($_POST['firstname']) || !isset($_POST['lastname'])
     $db = AtomicDatabase::getInstance();
 
     $result = $db->insert("users", 
-        array("email" => $email, "password" => $password, 
+        array("email" => $email, "password" => $hash, 
         "first_name" => $first, "last_name" => $last,
         "phone" => $phone) 
     );

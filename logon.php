@@ -40,8 +40,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 			<!-- Banner -->
 			<section id="banner">
 				<h2><?php echo $page->title(); ?></h2>
-				<p>MYSQL_USERNAME: <?php echo getenv("DB_USERNAME"); ?> <br/>
-				MYSQL_DATABASE:  <?php echo getenv("DB_DATABASE"); ?></p>
+				<p>Log in here</p>
 				<form method="POST" action="logon.php">
 					<ul class="box actions special"><div class="row gtr-uniform gtr-50">
 						<li><div class="col-12">

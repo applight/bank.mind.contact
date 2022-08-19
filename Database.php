@@ -37,6 +37,7 @@ class Database implements Transactions {
                 if ( $vals != "" ) $vals = $vals . ",";
                 $vals = $vals . $values[$i];
             }
+            $vals = "(".$vals.")";
         }
 
         if ( $where != "" ) {
