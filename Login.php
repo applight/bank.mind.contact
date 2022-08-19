@@ -31,7 +31,6 @@ class Login {
         );
 
         if ( $userdata != null && $userdata != false ) {
-            $userdata_arr = $userdata->fetch_row();
             if (password_verify($password, $userdata_arr['password'])) {
                 $_SESSION['loggedIn']   = true;
                 $_SESSION['email']      = $email;
@@ -40,7 +39,7 @@ class Login {
                 $_SESSION['phone']      = $userdata_arr['phone'];
                 return true;
             } else {
-                return $userdata_arr;
+                return $userdata;
             }
         } else {
             return false;
