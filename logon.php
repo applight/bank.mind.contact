@@ -19,7 +19,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 	}
 
 	if ( $result ) {
-		header('Location: https://bank.mind.contact/index.php');
+		//header('Location: https://bank.mind.contact/index.php');
 		die();
 	} else {
 		echo "failed to login!";
