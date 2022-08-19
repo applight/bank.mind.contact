@@ -26,7 +26,7 @@ class Login {
         }
 
         $userdata = $this->db->select('users', 
-            "*", 
+            array('password','first_name','last_name','phone'), 
             array('email'=>$email)
         );
 
