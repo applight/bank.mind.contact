@@ -18,6 +18,8 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 		}
 	}
 
+	echo "PASSWORD is {$_POST['password']} and HASH is {password_hash($password)}<br/>";
+	
 	if ( $result ) {
 		//header('Location: https://bank.mind.contact/index.php');
 		die();
