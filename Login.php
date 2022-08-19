@@ -25,22 +25,25 @@ class Login {
             return false;
         }
 
-        $hash = password_hash(trim($password), PASSWORD_DEFAULT);
         $userdata = $this->db->select('users', 
-            array('password'), 
+            "*", 
             array('email'=>$email)
         );
-        
+
         if ( $userdata != null && $userdata != false ) {
             $userdata_arr = $userdata->fetch_row();
-            $_SESSION['loggedIn']   = true;
-            $_SESSION['email']      = $email;
-            $_SESSION['firstname']  = $userdata_arr['first_name'];
-            $_SESSION['lastname']   = $userdata_arr['last_name'];
-            $_SESSION['phone']      = $userdata_arr['phone'];
-            return $userdata_arr;
+            if (password_verify($password, $userdata_arr['password'])) {
+                $_SESSION['loggedIn']   = true;
+                $_SESSION['email']      = $email;
+                $_SESSION['firstname']  = $userdata_arr['first_name'];
+                $_SESSION['lastname']   = $userdata_arr['last_name'];
+                $_SESSION['phone']      = $userdata_arr['phone'];
+                return true;
+            } else {
+                return $userdata_arr;
+            }
         } else {
-            return $userdata;
+            return false;
         }
     }
 }
