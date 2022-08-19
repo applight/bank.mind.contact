@@ -28,19 +28,16 @@ class Database implements Transactions {
         return "(".$expr.")";
     }
 
-    public function select($table, $values, $where="") {
-        $vals = "";
-        if ( $values == "*" ) { 
-            $vals = "*";
-        } else {
-            $vals = "(" . implode(",", $values) . ")";
+    public function select($table, $values="*", $where="") {
+        if ( is_array($values) ) {
+            $values = "(" . implode(",", $values) . ")";
         }
 
-        if ( $where != "" ) {
+        if ( !is_array($where) ) {
             $expr = $this->keyValEq($where);
-            return $this->db->query("SELECT {$vals} FROM {$table} WHERE {$expr}");
+            return $this->db->query("SELECT {$values} FROM {$table} WHERE {$expr}");
         } else {
-            return $this->db->query("SELECT {$vals} FROM {$table}");
+            return $this->db->query("SELECT {$values} FROM {$table}");
         }
     }
 
