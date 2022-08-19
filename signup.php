@@ -11,14 +11,8 @@ $page = Page::getInstance();
 
 			<?php echo $page->nav(); ?>
 
-			<!-- Banner -->
-			<section id="banner">
-				<h2>Sign up for <?php echo $page->title(); ?>
-				<br />
-				Earn 5% annual interest</h2>
-				<p>Putting better-than-savings interest in your checking account</p>
-			</section>
-
+			<?php echo $page->banner(); ?>
+			
 			<!-- Main -->
 				<section id="main" class="container">
 					<section class="box">

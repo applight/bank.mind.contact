@@ -12,15 +12,7 @@ $page = Page::getInstance();
 			<?php echo $page->nav(); ?>
 
 			<!-- Banner -->
-			<section id="banner">
-				<h2><?php echo $page->title(); ?></h2>
-				<p><?php echo "Hello {$_SESSION['firstname']}!"; ?></p>
-				<ul class="actions special"><form>
-					<li><input type="text"/></li>
-					<li><input type="password"/></li>
-					<li><a href="signup.php" class="button primary">Sign Up</a></li>
-				</form></ul>
-			</section>
+			<?php echo $page->banner(); ?>
 
 			<!-- Main -->
 				<section id="main" class="container">

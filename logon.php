@@ -31,7 +31,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 				<h2><?php echo $page->title(); ?></h2>
 				<p>Log in here</p>
 				<form method="POST" action="logon.php">
-					<ul class="box actions special"><div class="row gtr-uniform gtr-50">
+					<ul class="actions special">
 						<li><div class="col-12">
 							<input style="color: black;" type="text" name="email" value="" placeholder="email" />
 						</div></li>
@@ -41,7 +41,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 						<li><div class="cols-12 actions special">
 							<input type="submit" name="submit" class="button primary" />
 						</div></li>
-					</div></ul>
+					</ul>
 				</form>
 			</section>
 
