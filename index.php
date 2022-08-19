@@ -13,13 +13,13 @@ $page = Page::getInstance();
 
 			<!-- Banner -->
 			<section id="banner">
-				<h2>Alpha</h2>
-				<p>MYSQL_USERNAME: <?php echo getenv("DB_USERNAME"); ?> <br/>
-				MYSQL_DATABASE:  <?php echo getenv("DB_DATABASE"); ?></p>
-				<ul class="actions special">
+				<h2><?php echo $page->title(); ?></h2>
+				<p><?php echo "Hello {$_SESSION['firstname']}!"; ?></p>
+				<ul class="actions special"><form>
+					<li><input type="text"/></li>
+					<li><input type="password"/></li>
 					<li><a href="signup.php" class="button primary">Sign Up</a></li>
-					<li><a href="#" class="button">Learn More</a></li>
-				</ul>
+				</form></ul>
 			</section>
 
 			<!-- Main -->
