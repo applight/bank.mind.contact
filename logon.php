@@ -13,7 +13,7 @@ if (isset($_POST) && isset($_POST['email']) && isset($_POST['password'])) {
 		echo "result is false <br/>";
 	} else {
 		echo "result is non false or null<br/>";
-		foreach	( $result->fetch_row() as $k => $v ) {
+		foreach	( $result as $k => $v ) {
 			echo "--{$k}-- {$v} <br/>";
 		}
 	}
