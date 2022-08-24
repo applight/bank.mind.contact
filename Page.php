@@ -69,11 +69,11 @@ class Page {
     public function banner() {
         if ( $this->login->loggedIn() ) {
             return "<section id=\"banner\">"
-            . "<h2>{$page->title()}</h2>"
+            . "<h2>{$this->title()}</h2>"
             . "<p>Hello {$_SESSION['firstname']}!</p></section>";
         } else {
 			return "<section id=\"banner\">"
-			. "<h2>Sign up for {$page->title()}<br />Earn 5% annual interest</h2>"
+			. "<h2>Sign up for {$this->title()}<br />Earn 5% annual interest</h2>"
 			. "<p>Putting better-than-savings interest in your checking account</p></section>";
         }
     }
